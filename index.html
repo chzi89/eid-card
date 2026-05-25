@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eid ul Adha Mubarak – Greeting Card Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating particles container (filled by JS) -->
+  <div id="particles" aria-hidden="true"></div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <header class="hero">
+
+    <!-- Decorative SVG sky layer -->
+    <div class="sky-decor" aria-hidden="true">
+
+      <!-- Crescent moon -->
+      <svg class="moon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="moonMask">
+            <circle cx="50" cy="50" r="40" fill="white"/>
+            <circle cx="70" cy="35" r="32" fill="black"/>
+          </mask>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="#F5C842" mask="url(#moonMask)"/>
+      </svg>
+
+      <!-- Stars (static decorative) -->
+      <div class="stars">
+        <span class="star s1">✦</span>
+        <span class="star s2">✦</span>
+        <span class="star s3">✧</span>
+        <span class="star s4">✦</span>
+        <span class="star s5">✧</span>
+        <span class="star s6">✦</span>
+        <span class="star s7">✧</span>
+        <span class="star s8">✦</span>
+      </div>
+
+      <!-- Hanging lanterns -->
+      <div class="lanterns">
+        <div class="lantern l1">
+          <div class="lantern-body">
+            <div class="lantern-light"></div>
+          </div>
+          <div class="lantern-string"></div>
+          <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern l2">
+          <div class="lantern-body">
+            <div class="lantern-light"></div>
+          </div>
+          <div class="lantern-string"></div>
+          <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern l3">
+          <div class="lantern-body">
+            <div class="lantern-light"></div>
+          </div>
+          <div class="lantern-string"></div>
+          <div class="lantern-tassel"></div>
+        </div>
+      </div>
+
+    </div><!-- end .sky-decor -->
+
+    <!-- Hero text -->
+    <div class="hero-text">
+      <!-- Language toggle -->
+      <div class="lang-toggle" id="langToggle">
+        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn" data-lang="ur" onclick="setLanguage('ur')">اردو</button>
+      </div>
+
+      <p class="hero-sub" id="heroSub">عید الأضحى مبارک</p>
+      <h1 class="hero-title" id="heroTitle">Eid ul Adha Mubarak</h1>
+      <p class="hero-desc" id="heroDesc">
+        Send a personalised blessing to your loved ones on this blessed occasion
+      </p>
+    </div>
+
+    <!-- Mosque silhouette -->
+    <div class="mosque-wrap" aria-hidden="true">
+      <svg class="mosque" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ground base -->
+        <rect x="0" y="155" width="600" height="25" fill="currentColor"/>
+        <!-- Main dome -->
+        <ellipse cx="300" cy="130" rx="75" ry="70" fill="currentColor"/>
+        <rect x="225" y="130" width="150" height="50" fill="currentColor"/>
+        <!-- Left wing -->
+        <rect x="100" y="110" width="125" height="70" fill="currentColor"/>
+        <ellipse cx="162" cy="110" rx="40" ry="38" fill="currentColor"/>
+        <!-- Right wing -->
+        <rect x="375" y="110" width="125" height="70" fill="currentColor"/>
+        <ellipse cx="438" cy="110" rx="40" ry="38" fill="currentColor"/>
+        <!-- Centre minaret -->
+        <rect x="288" y="20" width="24" height="115" fill="currentColor"/>
+        <ellipse cx="300" cy="20" rx="16" ry="10" fill="currentColor"/>
+        <rect x="295" y="5" width="10" height="18" fill="currentColor"/>
+        <!-- Left minaret -->
+        <rect x="148" y="50" width="16" height="85" fill="currentColor"/>
+        <ellipse cx="156" cy="50" rx="10" ry="6" fill="currentColor"/>
+        <rect x="153" y="38" width="6" height="14" fill="currentColor"/>
+        <!-- Right minaret -->
+        <rect x="436" y="50" width="16" height="85" fill="currentColor"/>
+        <ellipse cx="444" cy="50" rx="10" ry="6" fill="currentColor"/>
+        <rect x="441" y="38" width="6" height="14" fill="currentColor"/>
+        <!-- Arched doorways -->
+        <path d="M275 180 Q275 140 300 140 Q325 140 325 180 Z" fill="#0D3D2A"/>
+        <path d="M140 180 Q140 150 156 150 Q172 150 172 180 Z" fill="#0D3D2A"/>
+        <path d="M428 180 Q428 150 444 150 Q460 150 460 180 Z" fill="#0D3D2A"/>
+        <!-- Windows -->
+        <circle cx="300" cy="95" r="10" fill="#0D3D2A"/>
+        <circle cx="256" cy="118" r="7" fill="#0D3D2A"/>
+        <circle cx="344" cy="118" r="7" fill="#0D3D2A"/>
+      </svg>
+    </div>
+
+  </header><!-- end .hero -->
+
+  <!-- ===== MAIN FORM SECTION ===== -->
+  <main class="main-section">
+
+    <!-- Islamic geometric pattern border -->
+    <div class="pattern-border" aria-hidden="true">
+      <div class="pattern-inner"></div>
+    </div>
+
+    <!-- Input card -->
+    <div class="glass-card form-card">
+      <h2 class="card-title" id="formTitle">Create Your Eid Greeting</h2>
+
+      <div class="form-group">
+        <label for="senderName" id="senderLabel">Your Name (Sender)</label>
+        <input
+          type="text"
+          id="senderName"
+          placeholder="e.g. Zaki"
+          autocomplete="given-name"
+          maxlength="40"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="receiverName" id="receiverLabel">Receiver's Name</label>
+        <input
+          type="text"
+          id="receiverName"
+          placeholder="e.g. Ahmed"
+          autocomplete="given-name"
+          maxlength="40"
+        />
+      </div>
+
+      <!-- Buttons row -->
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="generateWish()" id="generateBtn">
+          <span id="generateBtnText">✨ Generate Wish</span>
+        </button>
+        <button class="btn btn-secondary" onclick="generateRandom()" id="randomBtn">
+          🎲 <span id="randomBtnText">Random Wish</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== OUTPUT CARD ===== -->
+    <div class="wish-output" id="wishOutput" style="display:none;" role="region" aria-live="polite">
+
+      <!-- Greeting card -->
+      <div class="greeting-card glass-card" id="greetingCard">
+
+        <!-- Card decorative top bar -->
+        <div class="card-top-bar" aria-hidden="true">
+          <span>☽</span>
+          <span>✦ ✦ ✦</span>
+          <span>☽</span>
+        </div>
+
+        <!-- Arabic blessing -->
+        <p class="arabic-blessing" lang="ar" id="arabicBlessing">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+
+        <!-- Main wish text (typing animation applied here) -->
+        <div class="wish-text-wrap">
+          <p class="wish-text" id="wishText"></p>
+        </div>
+
+        <!-- Decorative divider -->
+        <div class="divider-row" aria-hidden="true">
+          <span class="divider-gem">◆</span>
+          <span class="divider-gem small">◆</span>
+          <span class="divider-gem">◆</span>
+        </div>
+
+        <!-- Quranic quote -->
+        <p class="quran-quote" id="quranQuote">
+          "Indeed, the most noble of you in the sight of Allah is the most righteous of you."
+          <br/><em>— Al-Hujurat 49:13</em>
+        </p>
+
+        <!-- Card decorative bottom bar -->
+        <div class="card-top-bar card-bottom-bar" aria-hidden="true">
+          <span>☽</span>
+          <span>✦ ✦ ✦</span>
+          <span>☽</span>
+        </div>
+
+      </div><!-- end .greeting-card -->
+
+      <!-- Action buttons -->
+      <div class="action-btns">
+        <button class="btn btn-action" onclick="copyWish()" id="copyBtn">
+          📋 <span id="copyBtnText">Copy Wish</span>
+        </button>
+        <button class="btn btn-action" onclick="downloadCard()" id="downloadBtn">
+          💾 <span id="downloadBtnText">Download Card</span>
+        </button>
+        <button class="btn btn-action btn-outline" onclick="resetForm()" id="newBtn">
+          🔄 <span id="newBtnText">New Wish</span>
+        </button>
+      </div>
+
+    </div><!-- end .wish-output -->
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p id="footerText">Made with ❤️ to spread the joy of Eid ul Adha By Sibght,Dihndsa</p>
+    <div class="footer-icons" aria-hidden="true">☽ ✦ ✦ ✦ ☽</div>
+  </footer>
+
+  <!-- html2canvas for download feature (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
